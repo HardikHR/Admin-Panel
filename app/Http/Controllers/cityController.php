@@ -49,8 +49,9 @@ class cityController extends MainController
 
     public function edit(string $id)
     {        
-        $city = cityModel::with('states')->where('id', $id)->first();
-        return view('layouts.city.editCity', ['cityEdit' => $city]);
+        $city = cityModel::with('states')->get(['*']);
+        return dd($city);
+        // return view('layouts.city.editCity', ['cityEdit' => $city]);
     }
 
     public function update(Request $request, string $id)
