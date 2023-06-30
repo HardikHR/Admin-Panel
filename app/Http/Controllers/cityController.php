@@ -56,17 +56,16 @@ class cityController extends MainController
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'state_id' => 'required|unique:city',   
+            'state_id' => 'required|',   
+            'name' => 'required|unique:city',
             'code' => 'required',
-            'name' => 'required',
         ]);
-
+        
         $city = cityModel::Where('id', $id)->first();
         $city->state_id = $request->state_id;
         $city->code = $request->code;
         $city->name = $request->name;
         $city->save();
-        // return dd($city);
         return redirect(route('layout.city'))->withSuccess('City update successfully !!!');
     }
 

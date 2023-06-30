@@ -16,17 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'index']);
-Route::get('/state', [stateController::class,'index'])->name('layout.state');
-Route::get('/createState', [stateController::class,'create'])->name('layout.create');
-Route::post('/addState', [stateController::class,'store'])->name('layout.addState');
-Route::get('/state/{id}/edit', [stateController::class,'edit'])->name('layout.StateEdit');
-Route::post('/state/{id}/update', [stateController::class,'update'])->name('layout.Stateupdate');
-Route::get('/state/{id}/delete', [stateController::class,'destroy'])->name('layout.Statedelete');
+Route::controller(cityController::class)->group(function () {
+    Route::get('/city', 'index')->name('layout.city');
+    Route::get('/createCity','create')->name('layout.create');
+    Route::post('/addCity','store')->name('layout.addCity');
+    Route::get('/city/{id}/edit', 'edit')->name('layout.cityEdit');
+    Route::post('/city/{id}/update', 'update')->name('layout.cityUpdate');
+    Route::get('/city/{id}/delete','destroy')->name('layout.cityDelete');
+});
 
-Route::get('/city', [cityController::class,'index'])->name('layout.city');
-Route::get('/createCity', [cityController::class,'create'])->name('layout.create');
-Route::post('/addCity', [cityController::class,'store'])->name('layout.addCity');
-Route::get('/city/{id}/edit', [cityController::class,'edit'])->name('layout.cityEdit');
-Route::post('/city/{id}/update', [cityController::class,'update'])->name('layout.cityUpdate');
-Route::get('/city/{id}/delete', [cityController::class, 'destroy'])->name('layout.cityDelete');
+Route::controller(stateController::class)->group(function () {
+    Route::get('/state', 'index')->name('layout.city');
+    Route::get('/createState','create')->name('layout.create');
+    Route::post('/addState','store')->name('layout.addCity');
+    Route::get('/state/{id}/edit', 'edit')->name('layout.cityEdit');
+    Route::post('/state/{id}/update', 'update')->name('layout.cityUpdate');
+    Route::get('/state/{id}/delete','destroy')->name('layout.cityDelete');
+});
