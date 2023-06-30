@@ -15,7 +15,7 @@ class stateController extends MainController
     public function index()
     {
         return view('layouts.index', [
-            'states' => stateModel::latest()->paginate(5)
+            'states' => stateModel::latest()->paginate(3)
         ]);
     }
 

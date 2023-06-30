@@ -47,7 +47,6 @@
           </div>
         </div>
       </section>
-
       <section class="content">
         <div class="container-fluid">
           <div class="row">
@@ -57,9 +56,8 @@
                 <div class="card-header">
                   <h3 class="card-title">City list</h3>
                 </div>
-
                 <div class="card-body">
-                  <table id="example2" id="deleteForm" class="table table-bordered table-striped">
+                  <table id="example2" class="table table-bordered table-striped">
                     <thead>
                       <tr style="text-align: center;">
                         <th>ID</th>
@@ -72,25 +70,24 @@
                     </thead>
                     <tbody>
                       @foreach ($states as $state)
-                        <tr style="text-align: center">
+                        <tr style="text-align: center;">
                           <td>{{$state->id}}</td>
                           <td>{{$state->name}}</td>
                           <td>{{$state->code}}</td>
                           <td>{{$state->created_at}}</td>
                           <td>{{$state->updated_at}}</td>
                           <td>
-                            <a href="/state/{{$state->id}}/edit"><button type="button" style="width: 100px" name="edit" class="btn btn-block btn-outline-primary btn-sm"><i class=" fa-duotone fa-sparkles fa-sm fa-shake " style=" color: #1c7ed6; " ></i> Edit</button></a>&nbsp;
-
-                            <form action="{{ route('layout.Statedelete', $state->id) }}" method="POST" class="delete-form">
-                              <a href="/state/{{$state->id}}/delete"><button type="button" style="width: 100px" name="delete" class="btn btn-block btn-outline-danger btn-sm clicked"><i class="fa fa-trash"></i> Delete</button></a>
-                            </form>
+                            <a href="/state/{{$state->id}}/edit"><button type="button" style="width: 100px"  name="edit" class="btn btn-block btn-outline-primary btn-sm"><i class=" fa-duotone fa-sparkles fa-sm fa-shake " style=" color: #1c7ed6;"></i>Edit</button></a>
+                            
+                            <a href="/state/{{$state->id}}/delete"><button type="button" style="width: 100px;" name="delete" class="btn btn-block btn-outline-danger btn-sm clicked"><i class="fa fa-trash"></i> Delete</button></a>
                           </td>
                         </tr>
                       @endforeach
                     </tbody>
                   </table>
+                  <br>
                   <div style="float: right">
-                    {{-- {{$city->links()}} --}}
+                    {{$states->links()}}
                   </div>
                 </div>
               </div>
@@ -127,7 +124,7 @@
         "info": false,
         "autoWidth": true,
         "responsive": true,
-      });
+      }); 
     });    
 </script>
 </body>

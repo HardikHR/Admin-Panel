@@ -82,15 +82,16 @@
                             <td>{{$ct->updated_at}}</td>
                             <td>
                              <a href="/city/{{$ct->id}}/edit"><button type="button" name="edit" style="width: 100px" class="btn btn-block btn-outline-primary btn-sm"><i class="fa fa-pencil"></i> Edit</button></a>&nbsp;
-                              
+                             
                              <a href="/city/{{$ct->id}}/delete"><button type="button" name="delete" style="width: 100px" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-trash"></i> Delete</button></a>
                             </td>
                           </tr>
                         @endforeach
                     </tbody>
                   </table>
+                  <br>
                   <div style="float: right">
-                    {{-- {{$city->links()}} --}}
+                     {{$city->links()}}
                   </div>
                 </div>
               </div>

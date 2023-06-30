@@ -12,7 +12,7 @@ class cityController extends MainController
     public function index()
     {
         return view('layouts.city',[
-            'city' => cityModel::with('states')->get()
+            'city' => cityModel::with('states')->paginate(3)
         ]);
     }
 
