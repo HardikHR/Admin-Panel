@@ -16,20 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::controller(cityController::class)->group(function () {
-    Route::get('/city', 'index')->name('layout.city');
-    Route::get('/createCity','create')->name('layout.create');
-    Route::post('/addCity','store')->name('layout.addCity');
+    Route::get('/city','index')->name('layout.city');
+    Route::get('/createCity', 'create')->name('layout.create');
+    Route::post('/addCity', 'store')->name('layout.addCity');
     Route::get('/city/{id}/edit', 'edit')->name('layout.cityEdit');
     Route::post('/city/{id}/update', 'update')->name('layout.cityUpdate');
     Route::get('/city/{id}/delete','destroy')->name('layout.cityDelete');
 });
 
 Route::controller(stateController::class)->group(function () {
-    Route::get('/state', 'index')->name('layout.city');
-    Route::get('/createState','create')->name('layout.create');
-    Route::post('/addState','store')->name('layout.addCity');
-    Route::get('/state/{id}/edit', 'edit')->name('layout.cityEdit');
-    Route::post('/state/{id}/update', 'update')->name('layout.cityUpdate');
-    Route::get('/state/{id}/delete','destroy')->name('layout.cityDelete');
+    Route::get('/','index')->name('layout.state');
+    Route::get('/state', 'index')->name('layout.state');
+    Route::get('/createState', 'create')->name('layout.create');
+    Route::get('/state/{id}/edit','edit')->name('layout.StateEdit');
+    Route::post('/state/{id}/update', 'update')->name('layout.Stateupdate');
+    Route::get('/state/{id}/delete', 'destroy')->name('layout.Statedelete');
 });
