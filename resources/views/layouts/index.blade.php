@@ -4,26 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>State | DataTables</title>
+  <title>City | DataTables</title>
 
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css') }}">
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-
 </head>
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
-    <!-- Navbar -->
 @include('layouts.header')
 @include('layouts.sidebar')
 
@@ -39,12 +32,12 @@
             <strong>{{Session('alert-danger')}}</strong>
         </div>
         @endif
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
+
+        <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>State Table</h1>
+              <h1>City Table</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -52,20 +45,21 @@
               </ol>
             </div>
           </div>
-        </div><!-- /.container-fluid -->
+        </div>
       </section>
 
-      <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
+             
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">State list</h3>
+                  <h3 class="card-title">City list</h3>
                 </div>
+
                 <div class="card-body">
-                  <table id="example2" class="table table-bordered table-striped">
+                  <table id="example2" id="deleteForm" class="table table-bordered table-striped">
                     <thead>
                       <tr style="text-align: center;">
                         <th>ID</th>
@@ -96,7 +90,7 @@
                     </tbody>
                   </table>
                   <div style="float: right">
-                    {{$states->links()}}
+                    {{-- {{$city->links()}} --}}
                   </div>
                 </div>
               </div>
@@ -113,12 +107,12 @@
   <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
 
-
-  <!-- Page specific script -->
-<script type="text/javascript">
+  <script type="text/javascript">
     $(function () {
       $("#example1").DataTable({
         "responsive": true, "length#example1Change": false, "autoWidth": false,
@@ -136,30 +130,5 @@
       });
     });    
 </script>
-
-<script>
-   const deleteForms = document.querySelectorAll('.delete-form');
-    const deleteButtons = document.querySelectorAll('.delete-btn');
-
-    deleteButtons.forEach((button, index) => {
-        button.addEventListener('click', function() {
-            const form = deleteForms[index];
-            Swal.fire({
-                title: 'Confirm Delete',
-                text: 'Are you sure you want to delete this item?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Delete'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            });
-        });
-    });
-</script>
 </body>
-
 </html>
