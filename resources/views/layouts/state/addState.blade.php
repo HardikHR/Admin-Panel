@@ -43,20 +43,20 @@
                 <div class="card-body" style="width: 580px">
                   <div class="form-group">
                     <label for="name">State name</label>
-                    <input type="text" name="name" value="{{ old('name')}}" class="form-control" id="name" placeholder="Enter state name">
-                     @if($errors->has('name'))
-                      <span class="text-danger">{{ $errors->first('name') }}</span>
+                    <input type="text" name="state_name" value="{{ old('state_name')}}" class="form-control" id="name" placeholder="Enter state name">
+                     @if($errors->has('state_name'))
+                      <span class="text-danger">{{ $errors->first('state_name') }}</span>
                     @endif
                   </div>
                   <div class="form-group">
-                    <label for="scode">Code</label>
-                    <input type="text" name="code" value="{{ old('code')}}" class="form-control" id="code" placeholder="Enter state code">
-                    @if($errors->has('code'))
-                      <span class="text-danger">{{ $errors->first('code') }}</span>
+                    <label for="scode">State code</label>
+                    <input type="text" name="state_code" value="{{ old('state_code')}}" class="form-control" id="code" placeholder="Enter state code">
+                    @if($errors->has('state_code'))
+                      <span class="text-danger">{{ $errors->first('state_code') }}</span>
                     @endif
                   </div>
                   <div class="form-group">
-                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>
               </form>

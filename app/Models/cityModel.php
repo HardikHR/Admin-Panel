@@ -11,7 +11,7 @@ class cityModel extends Model
        protected $table = 'city';
         protected $primaryKey = 'id';
 
-     public function states()
+     public function state()
         {
             return $this->belongsTo('App\Models\stateModel','state_id');
         }

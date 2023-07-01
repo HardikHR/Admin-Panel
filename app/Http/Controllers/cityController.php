@@ -12,14 +12,14 @@ class cityController extends MainController
     public function index()
     {
         return view('layouts.city',[
-            'city' => cityModel::with('states')->paginate(3)
+            'city' => cityModel::with('state')->paginate(3)
         ]);
     }
 
     public function create()
     {
         return view('layouts.city.addCity',[
-            'city' => stateModel::get()
+            'state' => stateModel::get()
         ]);
     }
     // Store a newly created resource in storage.
@@ -28,14 +28,14 @@ class cityController extends MainController
     {
         $request->validate([
             'state_id'=>'required',
-            'name'=>'required|unique:city',
-            'code'=>'required|digits:2'
+            'city_name'=>'required|unique:city',
+            'city_code'=>'required|digits:2'
         ]);
 
         $city = new cityModel;
         $city->state_id = $request->state_id;
-        $city->name = $request->name;
-        $city->code = $request->code;
+        $city->city_name = $request->city_name;
+        $city->city_code = $request->city_code;
         $city->save();
         return redirect(route('layout.city'))->withSuccess('City create successfully !!!');
     }
@@ -43,30 +43,31 @@ class cityController extends MainController
     public function show(string $id)
     {
         return view('layouts.city.editCity',[
-            'city' => cityModel::with('states')->get()
+            'city' => cityModel::with('state')->get()
         ]);
     }
 
     public function edit(string $id)
     {        
-        $city = cityModel::with('states')->get(['*']);
-        return dd($city);
-        // return view('layouts.city.editCity', ['cityEdit' => $city]);
+        $city = cityModel::where('id',$id)->first();
+        // return dd($city);
+        return view('layouts.city.editCity', ['cityEdit' => $city]);
     }
 
     public function update(Request $request, string $id)
     {
         $request->validate([
             'state_id' => 'required|',   
-            'name' => 'required|unique:city',
-            'code' => 'required',
+            'city_name' => 'required|unique:city',
+            'city_code' => 'required',
         ]);
         
         $city = cityModel::Where('id', $id)->first();
         $city->state_id = $request->state_id;
-        $city->code = $request->code;
-        $city->name = $request->name;
+        $city->city_code = $request->city_code;
+        $city->city_name = $request->city_name;
         $city->save();
+        // return dd($city);
         return redirect(route('layout.city'))->withSuccess('City update successfully !!!');
     }
 
@@ -75,9 +76,9 @@ class cityController extends MainController
         $del_city = cityModel::where('id', $id)->first();
         try {
             $del_city->delete();
-            return back()->withSuccess("$del_city->name ---> City Deleted Successfully !!!");
+            return back()->withSuccess("$del_city->city_name ---> City Deleted Successfully !!!");
         } catch (Exception $e) {
-            return redirect(route('layout.city'))->with('alert-danger', "Cannot delete this record ---> $del_city->name");
+            return redirect(route('layout.city'))->with('alert-danger', "error deleting  $del_city->name record");
         }
     }
 }

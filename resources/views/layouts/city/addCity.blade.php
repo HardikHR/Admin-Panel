@@ -45,8 +45,9 @@
                   <div class="form-group">
                       <label>Select state name</label>
                       <select class="custom-select" name="state_id">
-                        @foreach($city as $st)
-                        <option value="{{$st->id}}">{{$st->name}}</option>
+                        <option value="">Select state</option>
+                        @foreach($state as $st)
+                        <option value="{{$st->id}}">{{$st->state_name}}</option>
                         @endforeach
                       </select>
                       @if($errors->has('state_id'))
@@ -56,22 +57,22 @@
  
                   <div class="form-group">
                     <label for="scode">City name</label>
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter state name">
-                    @if($errors->has('name'))
-                      <span class="text-danger">{{ $errors->first('name') }}</span>
+                    <input type="text" name="city_name" value="{{ old('city_name') }}" class="form-control" placeholder="Enter state name">
+                    @if($errors->has('city_name'))
+                      <span class="text-danger">{{ $errors->first('city_name') }}</span>
                     @endif
                   </div>
 
                   <div class="form-group">
                     <label for="name">City code</label>
-                    <input type="text" name="code" value="{{ old('code') }}" class="form-control" placeholder="Enter state code">
-                     @if($errors->has('code'))
-                      <span class="text-danger">{{ $errors->first('code') }}</span>
+                    <input type="text" name="city_code" value="{{ old('city_code') }}" class="form-control" placeholder="Enter state code">
+                     @if($errors->has('city_code'))
+                      <span class="text-danger">{{ $errors->first('city_code') }}</span>
                     @endif
                   </div>
 
                   <div class="form-group">
-                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>
               </form>

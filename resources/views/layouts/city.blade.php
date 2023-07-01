@@ -64,8 +64,8 @@
                       <tr style="text-align: center">
                         <th>ID</th>
                         <th>State name</th>
-                        <th>City code</th>
                         <th>City name</th>
+                        <th>City code</th>
                         <th>Created at</th>
                         <th>Updated at</th>
                         <th>Action</th>
@@ -75,9 +75,9 @@
                         @foreach ($city as $ct)
                           <tr style="text-align: center">
                             <td>{{$ct->id}}</td>
-                            <td>{{$ct->states->name}}</td>
-                            <td>{{$ct->code}}</td>
-                            <td>{{$ct->name}}</td>
+                            <td>{{$ct->state->state_name}}</td>
+                            <td>{{$ct->city_name}}</td>
+                            <td>{{$ct->city_code}}</td>
                             <td>{{$ct->created_at}}</td>
                             <td>{{$ct->updated_at}}</td>
                             <td>

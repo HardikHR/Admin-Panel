@@ -44,8 +44,9 @@
                               <div class="form-group">
                                   <label>Select state name</label>
                                   <select class="custom-select" name="state_id">
-                                      @foreach ($cityEdit as $sd)
-                                      <option value="{{$cityEdit->state_id}}">{{$cityEdit->states->name}}</option>
+                                      {{$state = App\Models\stateModel::get('state_name')}}
+                                      @foreach ($state as $st)
+                                      <option value="{{$cityEdit->state_id}}">{{$st->state_name}}</option>
                                       @endforeach
                                   </select>
                                   @if($errors->has('state_id'))
@@ -54,16 +55,16 @@
                               </div>
                               <div class="form-group">
                                   <label for="name">City name</label>
-                                  <input type="text" name="name" value="{{$cityEdit->name}}" class="form-control" id="name" placeholder="Enter state name">
-                                  @if($errors->has('name'))
-                                  <span class="text-danger">{{ $errors->first('name') }}</span>
+                                  <input type="text" name="city_name" value="{{$cityEdit->city_name}}" class="form-control" id="name" placeholder="Enter state name">
+                                  @if($errors->has('city_name'))
+                                  <span class="text-danger">{{ $errors->first('city_name') }}</span>
                                   @endif
                               </div>
                               <div class="form-group">
                                   <label for="scode">Code</label>
-                                  <input type="text" name="code" value="{{ $cityEdit->code }}" class="form-control" id="code" placeholder="Enter state code">
-                                  @if($errors->has('code'))
-                                  <span class="text-danger">{{ $errors->first('code') }}</span>
+                                  <input type="text" name="city_code" value="{{ $cityEdit->city_code }}" class="form-control" id="code" placeholder="Enter state code">
+                                  @if($errors->has('city_code'))
+                                  <span class="text-danger">{{ $errors->first('city_code') }}</span>
                                   @endif
                               </div>
                               <div class="form-group">

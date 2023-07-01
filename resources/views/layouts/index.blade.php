@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>City | DataTables</title>
+  <title>Ciyaza | City</title>
 
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,7 +37,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>City Table</h1>
+              <h1>State Table</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -54,7 +54,7 @@
              
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">City list</h3>
+                  <h3 class="card-title">State list</h3>
                 </div>
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-striped">
@@ -62,7 +62,7 @@
                       <tr style="text-align: center;">
                         <th>ID</th>
                         <th>State name</th>
-                        <th>State Code</th>
+                        <th>State code</th>
                         <th>Created at</th>
                         <th>Updated at</th>
                         <th>Action</th>
@@ -72,8 +72,8 @@
                       @foreach ($states as $state)
                         <tr style="text-align: center;">
                           <td>{{$state->id}}</td>
-                          <td>{{$state->name}}</td>
-                          <td>{{$state->code}}</td>
+                          <td>{{$state->state_name}}</td>
+                          <td>{{$state->state_code}}</td>
                           <td>{{$state->created_at}}</td>
                           <td>{{$state->updated_at}}</td>
                           <td>
@@ -99,11 +99,6 @@
    @include('layouts.footer')
   </div>
 
-  <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="sweetalert2.all.min.js"></script>
   <script src="sweetalert2.min.js"></script>

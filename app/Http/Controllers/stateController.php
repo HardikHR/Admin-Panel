@@ -28,13 +28,13 @@ class stateController extends MainController
     {
         //Validation 
         $request->validate([
-            'name' => 'required|unique:states',
-            'code' => 'required',
+            'state_name' => 'required|unique:state',
+            'state_code' => 'required',
         ]);
 
         $state = new stateModel;
-        $state->name = $request->name;
-        $state->code = $request->code;
+        $state->state_name = $request->state_name;
+        $state->state_code = $request->state_code;
         $state->save();
         return redirect(route('layout.state'))->withSuccess('State created successfully !!!');
     }
@@ -53,13 +53,13 @@ class stateController extends MainController
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required|unique:states',
-            'code' => 'required',
+            'state_name' => 'required|unique:state',
+            'state_code' => 'required',
         ]);
 
         $prods = stateModel::Where('id', $id)->first();
-        $prods->name = $request->name;
-        $prods->code = $request->code;
+        $prods->state_name = $request->state_name;
+        $prods->state_code = $request->state_code;
         $prods->save();
         return redirect(route('layout.state'))->withSuccess('State updated successfully !!!');
     }
@@ -69,9 +69,9 @@ class stateController extends MainController
         $del_state = stateModel::where('id', $id)->first();
         try {
             $del_state->delete();
-            return back()->withSuccess("$del_state->name ---> State Deleted Successfully !!!");
+            return back()->withSuccess("$del_state->state_name ---> State Deleted Successfully !!!");
         } catch (Exception $e) {
-            return redirect(route('layout.state'))->with('alert-danger', "Cannot delete this record ---> $del_state->name");
+            return redirect(route('layout.state'))->with('alert-danger', "Cannot delete ---> $del_state->state_name <--- because this record exist in city table");
         }
     }
 }
