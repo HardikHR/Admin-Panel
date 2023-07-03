@@ -44,13 +44,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/state" class="nav-link active">
+                <a href="/state" class="nav-link {{(\Request::route()->getName() == 'layout.state') ? 'active' : '' }} ">
                   <i class="far fa-square nav-icon"></i>
                   <p>State</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/city" class="nav-link">
+                <a href="/city" class="nav-link {{(\Request::route()->getName() == 'layout.city') ? 'active' : '' }}">
                   <i class="far fa-square nav-icon"></i>
                   <p>City</p>
                 </a>
