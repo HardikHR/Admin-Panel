@@ -44,7 +44,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                  <a href="/createState"><button type="button" class="btn btn-block btn-outline-primary">Add</button></a>
+                  <a href="/createState"><button type="button" class="btn btn-block btn-outline-primary">Add state</button></a>
               </ol>
             </div>
           </div>
@@ -80,12 +80,12 @@
                           <td>{{$state->created_at}}</td>
                           <td>{{$state->updated_at}}</td>
                           <td style="display: flex;justify-content: center">
-                            <a href="/state/{{$state->id}}/edit"><button type="button" name="edit" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-pencil-alt"></i></button></a>&nbsp;&nbsp;&nbsp;
+                            <a href="/state/{{$state->id}}/edit"><button type="button" name="edit" title="Edit" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-pencil-alt"></i></button></a>&nbsp;&nbsp;&nbsp;
                             
                             <form method="POST" action="{{ route('layout.Statedelete', $state->id) }}">
                               @csrf
                               @method('DELETE')
-                                <a href="/state/{{$state->id}}/delete"><button type="button"name="delete" class="btn btn-block btn-outline-danger btn-sm clicked show-alert-delete-box"><i class="fa fa-trash"></i></button></a>
+                                <a href="/state/{{$state->id}}/delete"><button type="button" name="delete" title="Delete" class="btn btn-block btn-outline-danger btn-sm clicked show-alert-delete-box"><i class="fa fa-trash"></i></button></a>
                             </form>
                           </td>
                         </tr>

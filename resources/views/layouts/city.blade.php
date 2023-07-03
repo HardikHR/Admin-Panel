@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                  <a href="/createCity"><button type="button" class="btn btn-block btn-outline-primary">Add</button></a>
+                  <a href="/createCity"><button type="button" class="btn btn-block btn-outline-primary">Add city</button></a>
               </ol>
             </div>
           </div>
