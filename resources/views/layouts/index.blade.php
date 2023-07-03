@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" rel="stylesheet">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -76,10 +79,14 @@
                           <td>{{$state->state_code}}</td>
                           <td>{{$state->created_at}}</td>
                           <td>{{$state->updated_at}}</td>
-                          <td>
-                            <a href="/state/{{$state->id}}/edit"><button type="button" style="width: 100px"  name="edit" class="btn btn-block btn-outline-primary btn-sm"><i class=" fa-duotone fa-sparkles fa-sm fa-shake " style=" color: #1c7ed6;"></i>Edit</button></a>
+                          <td style="display: flex;justify-content: center">
+                            <a href="/state/{{$state->id}}/edit"><button type="button" name="edit" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-pencil-alt"></i></button></a>&nbsp;&nbsp;&nbsp;
                             
-                            <a href="/state/{{$state->id}}/delete"><button type="button" style="width: 100px;" name="delete" class="btn btn-block btn-outline-danger btn-sm clicked"><i class="fa fa-trash"></i> Delete</button></a>
+                            <form method="POST" action="{{ route('layout.Statedelete', $state->id) }}">
+                              @csrf
+                              @method('DELETE')
+                                <a href="/state/{{$state->id}}/delete"><button type="button"name="delete" class="btn btn-block btn-outline-danger btn-sm clicked show-alert-delete-box"><i class="fa fa-trash"></i></button></a>
+                            </form>
                           </td>
                         </tr>
                       @endforeach
@@ -98,9 +105,15 @@
     </div>
    @include('layouts.footer')
   </div>
+{{-- <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="sweetalert2.all.min.js"></script>
+<script src="sweetalert2.all.min.js"></script>
   <script src="sweetalert2.min.js"></script>
   <link rel="stylesheet" href="sweetalert2.min.css">
 
@@ -120,7 +133,29 @@
         "autoWidth": true,
         "responsive": true,
       }); 
-    });    
+    }); 
 </script>
+
+<script type="text/javascript">
+    $('.show-alert-delete-box').click(function(event){
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: "Are you sure you want to delete this record?",
+            icon: "warning",
+            type: "warning",
+            buttons: ["Cancel","Yes!"],
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
