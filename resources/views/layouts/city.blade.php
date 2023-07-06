@@ -109,13 +109,16 @@
    @include('layouts.footer')
   </div>
 
-  {{-- <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-  <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script> --}}
+  <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+  <script src="{{asset('plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+  <script src="{{asset('dist/js/adminlte.min.js') }}"></script>
+  <script src="{{asset('dist/js/demo.js') }}"></script>
 
   <script type="text/javascript"> 
        $(function () {
